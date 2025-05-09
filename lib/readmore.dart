@@ -31,8 +31,8 @@ class ReadMoreText extends StatefulWidget {
     this.postDataText,
     this.preDataTextStyle,
     this.postDataTextStyle,
-    this.trimExpandedText = 'show less',
-    this.trimCollapsedText = 'read more',
+    this.trimExpandedText = const Text('show less'),
+    this.trimCollapsedText = const Text('read more'),
     this.colorClickableText,
     this.trimLength = 240,
     this.trimLines = 2,
@@ -65,8 +65,8 @@ class ReadMoreText extends StatefulWidget {
     this.richPreData,
     this.richPostData,
     this.isCollapsed,
-    this.trimExpandedText = 'show less',
-    this.trimCollapsedText = 'read more',
+    this.trimExpandedText = const Text('show less'),
+    this.trimCollapsedText = const Text('read more'),
     this.colorClickableText,
     this.trimLength = 240,
     this.trimLines = 2,
@@ -140,8 +140,8 @@ class ReadMoreText extends StatefulWidget {
   final String delimiter;
   final String? data;
   final TextSpan? richData;
-  final String trimExpandedText;
-  final String trimCollapsedText;
+  final Widget trimExpandedText;
+  final Widget trimCollapsedText;
   final Color? colorClickableText;
   final TextStyle? delimiterStyle;
 
@@ -275,14 +275,20 @@ class ReadMoreTextState extends State<ReadMoreText> {
     final defaultDelimiterStyle = widget.delimiterStyle ?? effectiveTextStyle;
 
     final link = TextSpan(
-      text: isCollapsed ? widget.trimCollapsedText : widget.trimExpandedText,
+      children: [
+        WidgetSpan(
+          child:
+              isCollapsed ? widget.trimCollapsedText : widget.trimExpandedText,
+        ),
+      ],
       style: isCollapsed ? defaultMoreStyle : defaultLessStyle,
       recognizer: _recognizer,
     );
 
     final delimiter = TextSpan(
       text: isCollapsed
-          ? widget.trimCollapsedText.isNotEmpty
+          ? (widget.trimCollapsedText is Text &&
+                  (widget.trimCollapsedText as Text).data?.isNotEmpty == true)
               ? widget.delimiter
               : ''
           : '',

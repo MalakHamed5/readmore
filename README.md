@@ -22,12 +22,34 @@ import 'package:readmore/readmore.dart';
 
 ```dart
 ReadMoreText(
-  'Flutter is Google’s mobile UI open source framework to build high-quality native (super fast) interfaces for iOS and Android apps with the unified codebase.',
+  'Flutter is Google's mobile UI open source framework to build high-quality native (super fast) interfaces for iOS and Android apps with the unified codebase.',
   trimMode: TrimMode.Line,
   trimLines: 2,
   colorClickableText: Colors.pink,
-  trimCollapsedText: 'Show more',
-  trimExpandedText: 'Show less',
+  trimCollapsedText: const Text('Show more'),
+  trimExpandedText: const Text('Show less'),
+  moreStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+);
+```
+
+### Custom Widget Example
+
+You can now use any widget for the expand/collapse buttons:
+
+```dart
+ReadMoreText(
+  'Flutter is Google's mobile UI open source framework to build high-quality native (super fast) interfaces for iOS and Android apps with the unified codebase.',
+  trimMode: TrimMode.Line,
+  trimLines: 2,
+  colorClickableText: Colors.pink,
+  trimCollapsedText: TextButton(
+    onPressed: () {},
+    child: const Text('...Show more'),
+  ),
+  trimExpandedText: TextButton(
+    onPressed: () {},
+    child: const Text('...Show less'),
+  ),
   moreStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
 );
 ```
@@ -58,8 +80,8 @@ ReadMoreText.rich(
   trimMode: TrimMode.Line,
   trimLines: 2,
   colorClickableText: Colors.pink,
-  trimCollapsedText: '...Read more',
-  trimExpandedText: ' Less',
+  trimCollapsedText: const Text('...Read more'),
+  trimExpandedText: const Text(' Less'),
 );
 ```
 
@@ -73,6 +95,8 @@ ReadMoreText(
   trimMode: TrimMode.Line,
   trimLines: 2,
   colorClickableText: Colors.pink,
+  trimCollapsedText: const Text('...Read more'),
+  trimExpandedText: const Text(' Less'),
   annotations: [
     Annotation(
       regExp: RegExp(r'#([a-zA-Z0-9_]+)'),

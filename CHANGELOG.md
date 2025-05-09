@@ -1,3 +1,9 @@
+## [3.2.0]
+
+- Added support for using any Widget as `trimCollapsedText` and `trimExpandedText` instead of just String values.
+- Updated example app to demonstrate the new Widget support.
+- Updated documentation to reflect the new Widget support.
+
 ## [3.1.0]
 
 Contributed by [@maRci002](https://github.com/maRci002) - see PR [#59](https://github.com/jonataslaw/readmore/pull/59).

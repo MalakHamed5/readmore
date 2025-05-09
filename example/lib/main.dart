@@ -38,7 +38,14 @@ class _DemoAppState extends State<DemoApp> {
     123: 'Android',
     456: 'iOS',
   };
-
+  late final Widget trimCollapsedText = TextButton(
+    onPressed: () {},
+    child: const Text('...Show more'),
+  );
+  late final Widget trimExpandedText = TextButton(
+    onPressed: () {},
+    child: const Text('...Show less'),
+  );
   var _trimMode = TrimMode.Line;
   int _trimLines = 3;
   int _trimLength = 190;
@@ -62,7 +69,6 @@ class _DemoAppState extends State<DemoApp> {
   @override
   void dispose() {
     super.dispose();
-
     isCollapsed.dispose();
   }
 
@@ -91,7 +97,7 @@ class _DemoAppState extends State<DemoApp> {
           key: const Key('showMore'),
           padding: const EdgeInsets.all(16),
           child: ReadMoreText(
-            'Flutter is Google’s mobile UI open source framework to build high-quality native (super fast) interfaces for iOS and Android apps with the unified codebase.😊😊😊',
+            "Flutter is Google's mobile UI open source framework to build high-quality native (super fast) interfaces for iOS and Android apps with the unified codebase.😊😊😊",
             trimMode: _trimMode,
             trimLines: _trimLines,
             trimLength: _trimLength,
@@ -99,8 +105,8 @@ class _DemoAppState extends State<DemoApp> {
             preDataTextStyle: const TextStyle(fontWeight: FontWeight.w500),
             style: const TextStyle(color: Colors.black),
             colorClickableText: Colors.pink,
-            trimCollapsedText: '...Show more',
-            trimExpandedText: ' show less',
+            trimCollapsedText: trimCollapsedText,
+            trimExpandedText: trimExpandedText,
           ),
         ),
         const Divider(
@@ -115,8 +121,8 @@ class _DemoAppState extends State<DemoApp> {
             trimLength: _trimLength,
             style: const TextStyle(color: Colors.black),
             colorClickableText: Colors.pink,
-            trimCollapsedText: '...Expand',
-            trimExpandedText: ' Collapse ',
+            trimCollapsedText: const Text('...Expand'),
+            trimExpandedText: const Text(' Collapse '),
             annotations: [
               // URL
               Annotation(
@@ -210,8 +216,8 @@ class _DemoAppState extends State<DemoApp> {
             isCollapsed: isCollapsed,
             style: const TextStyle(color: Colors.black),
             colorClickableText: Colors.pink,
-            trimCollapsedText: '...Read more',
-            trimExpandedText: ' Less',
+            trimCollapsedText: const Text('...Read more'),
+            trimExpandedText: const Text(' Less'),
           ),
         ),
         ValueListenableBuilder(
@@ -259,13 +265,13 @@ class _DemoAppState extends State<DemoApp> {
                 ),
               ],
             ),
-            style: TextStyle(inherit: false),
+            style: const TextStyle(inherit: false),
             trimMode: _trimMode,
             trimLines: _trimLines,
             trimLength: _trimLength,
             colorClickableText: Colors.blueAccent,
-            trimCollapsedText: '...Read more',
-            trimExpandedText: ' Less',
+            trimCollapsedText: const Text('...Read more'),
+            trimExpandedText: const Text(' Less'),
           ),
         ),
         const Divider(
@@ -279,8 +285,8 @@ class _DemoAppState extends State<DemoApp> {
             trimLines: _trimLines,
             trimLength: _trimLength,
             colorClickableText: Colors.blueAccent,
-            trimCollapsedText: '...Read more',
-            trimExpandedText: ' Less',
+            trimCollapsedText: const Text('...Read more'),
+            trimExpandedText: const Text(' Less'),
           ),
         ),
       ],
